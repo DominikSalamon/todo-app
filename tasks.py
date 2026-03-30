@@ -20,11 +20,11 @@ class TaskManager:
         for i, task in enumerate(self.tasks, 1):
             status = "^" if task["done"] else "X"
             print(f"{i}. [{status}] {task['title']}")
-    def filter_task(self,status):
-        if status == "done":
-            filtered = [t for t in self.task if t["done"]]
+    def filter_tasks(self,status):
+        if status == "zrobione":
+            filtered = [t for t in self.tasks if t["done"]]
         else:
-            filtered = [t for t in self.task if not t["done"]]
+            filtered = [t for t in self.tasks if not t["done"]]
         for i, task in enumerate(filtered, 1):
             status = "^" if task["done"] else "X"
             print(f"{i}. [{status}] {task['title']}")
