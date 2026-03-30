@@ -1,10 +1,10 @@
-
+from storage import save_tasks, load_tasks
 
 def menu():
     print("\n📋 TO-DO LIST")
     print("1. Dodaj zadanie")
     print("2. Usuń zadanie")
-    print("3. Edytuj zadanie")
+    print("3. Edytuj treść zadania")
     print("4. Pokaż zadania")
     print("5. Filtruj zadania")
     print("6. Zapisz")
@@ -12,6 +12,7 @@ def menu():
 
 
 def main():
+    tasks = load_tasks()
 
     while True:
         menu()
@@ -27,12 +28,13 @@ def main():
             print("Podaj numer zadania: ")
             print("Nowa treść: ")
         elif choice == "4":
-            print("Show tasks")
+            print("Pokaz zadania")
 
         elif choice == "5":
-            print("done / undone: ")
+            print("zrobione/niezrobione: ")
 
         elif choice == "6":
+            save_tasks([])
             print("Zapisano!")
 
         elif choice == "7":
