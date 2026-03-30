@@ -27,6 +27,7 @@ def main():
         elif choice == "3":
             print("Podaj numer zadania: ")
             print("Nowa treść: ")
+            
         elif choice == "4":
             print("Pokaz zadania")
 
