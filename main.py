@@ -5,7 +5,7 @@ def menu():
     print("\n📋 TO-DO LIST")
     print("1. Dodaj zadanie")
     print("2. Usuń zadanie")
-    print("3. Edytuj zadanie")
+    print("3. Edytuj nazwę zadania")
     print("4. Pokaż zadania")
     print("5. Filtruj zadania")
     print("6. Zapisz")
