@@ -6,10 +6,11 @@ def menu():
     print("1. Dodaj zadanie")
     print("2. Usuń zadanie")
     print("3. Edytuj nazwę zadania")
-    print("4. Pokaż zadania")
-    print("5. Filtruj zadania")
-    print("6. Zapisz")
-    print("7. Wyjdź")
+    print("4. Oznacz jako zrobione")
+    print("5. Pokaż zadania")
+    print("6. Filtruj zadania")
+    print("7. Zapisz")
+    print("8. Wyjdź")
 
 
 def main():
@@ -34,19 +35,23 @@ def main():
             index = int(input("Podaj numer zadania: "))
             new_title = input("Nowa teść: ")
             manager.edit_task(index, new_title)
-            
         elif choice == "4":
             manager.show_tasks()
-
+            index = int(input("Podaj numer zadania: "))
+            manager.mark_as_done(index)
+            
         elif choice == "5":
+            manager.show_tasks()
+
+        elif choice == "6":
             status = input("zrobione / niezrobione: ")
             manager.filter_tasks(status)
 
-        elif choice == "6":
+        elif choice == "7":
             save_tasks(manager.tasks)
             print("Zapisano!")
 
-        elif choice == "7":
+        elif choice == "8":
             save_tasks(manager.tasks)
             break
 

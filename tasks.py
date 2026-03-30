@@ -13,12 +13,15 @@ class TaskManager:
     def edit_task(self, index, new_title):
         if 0 <= index - 1 < len(self.tasks):
             self.tasks[index - 1]["title"] = new_title
+    def mark_as_done(self, index):
+        if 0 <= index - 1 < len(self.tasks):
+            self.tasks[index - 1]["done"] = True
     def show_tasks(self):
         if not self.tasks:
             print("brak zadań")
             return
         for i, task in enumerate(self.tasks, 1):
-            status = "^" if task["done"] else "X"
+            status = "✅" if task["done"] else "X"
             print(f"{i}. [{status}] {task['title']}")
     def filter_tasks(self,status):
         if status == "zrobione":
@@ -26,5 +29,5 @@ class TaskManager:
         else:
             filtered = [t for t in self.tasks if not t["done"]]
         for i, task in enumerate(filtered, 1):
-            status = "^" if task["done"] else "X"
+            status = "✅" if task["done"] else "X"
             print(f"{i}. [{status}] {task['title']}")
