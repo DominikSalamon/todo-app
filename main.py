@@ -1,17 +1,21 @@
-
+from tasks import TaskManager
+from storage import save_tasks, load_tasks
 
 def menu():
     print("\n📋 TO-DO LIST")
     print("1. Dodaj zadanie")
     print("2. Usuń zadanie")
-    print("3. Edytuj zadanie")
-    print("4. Pokaż zadania")
-    print("5. Filtruj zadania")
-    print("6. Zapisz")
-    print("7. Wyjdź")
+    print("3. Edytuj nazwę zadania")
+    print("4. Oznacz jako zrobione")
+    print("5. Pokaż zadania")
+    print("6. Filtruj zadania")
+    print("7. Zapisz")
+    print("8. Wyjdź")
 
 
 def main():
+    tasks = load_tasks()
+    manager = TaskManager(tasks)
 
     while True:
         menu()
@@ -19,23 +23,36 @@ def main():
 
         if choice == "1":
             title = input("Podaj zadanie: ")
-
+            manager.add_task(title)
+            
         elif choice == "2":
-            print("Podaj numer zadania: ")
+            manager.show_tasks()
+            index = int(input("Podaj numer zadania: "))
+            manager.delete_task(index)
 
         elif choice == "3":
-            print("Podaj numer zadania: ")
-            print("Nowa treść: ")
+            manager.show_tasks()
+            index = int(input("Podaj numer zadania: "))
+            new_title = input("Nowa teść: ")
+            manager.edit_task(index, new_title)
         elif choice == "4":
-            print("Show tasks")
-
+            manager.show_tasks()
+            index = int(input("Podaj numer zadania: "))
+            manager.mark_as_done(index)
+            
         elif choice == "5":
-            print("done / undone: ")
+            manager.show_tasks()
 
         elif choice == "6":
-            print("Zapisano!")
+            status = input("zrobione / niezrobione: ")
+            manager.filter_tasks(status)
 
         elif choice == "7":
+            save_tasks(manager.tasks)
+            print("Zapisano!")
+
+        elif choice == "8":
+            save_tasks(manager.tasks)
             break
 
         else:
